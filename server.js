@@ -32,12 +32,9 @@ MongoClient.connect("mongodb://guess:a123456@ds059682.mlab.com:59682/todolist334
 
     app.delete("/delete", (req,res) => {
         let item = req.body.value;
-        console.log(item)
         db.collection("todo").findOneAndDelete({task: item}, (err, result) => {
             if(err) {
                 console.log(err) 
-            } else {
-                console.log("deleted");
             }
         });
     })
