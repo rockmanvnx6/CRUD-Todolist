@@ -13,13 +13,12 @@
 <body>
 	<script>
 		function deleteItem(e) {
-			console.log(e.innerHTML)
 			fetch("/delete", {
 				method: 'delete',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({value: e.innerHTML})
+				body: JSON.stringify({value: e.innerText})
 			}).then(res => {
 				if (res.ok) console.log(res.json())
 				location.reload()
@@ -31,6 +30,7 @@
 			})
 
 			console.log("ok")
+			e.style.display = "none";
 		}
 	</script>
 <div class="container">
@@ -48,7 +48,7 @@
 	    <div class="form-group">
 		    <input type="text"
 		      class="form-control" name="task" id="" aria-describedby="helpId" placeholder="">
-		      <button type="button" class="btn btn-primary">submit</button>
+		      <button type="submit" class="btn btn-primary">submit</button>
 	    </div>
 	</form>
 	
