@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="public/style.css">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function deleteItem(e) {
+			console.log(e.innerHTML)
+			fetch("/delete", {
+				method: 'delete',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({value: e.innerHTML})
+			}).then(res => {
+				if (res.ok) console.log(res.json())
+				location.reload()
+			}).catch(err => {
+				console.log(err)
+			}).then(data => {
+				console.log(data)
+				location.reload()
+			})
+
+			console.log("ok")
+		}
+	</script>
+<div class="container">
+	<div class="tasks">
+		<div class="list">
+			<% for(var i=0; i < todo.length; i++) {%>
+					<button type="button" class="list-group-item list-group-item-action" onclick=deleteItem(this)><i class="fa fa-window-close" aria-hidden="true"></i><%= todo[i].task %></button>
+			<% } %>
+		</div>
+
+	</div>
+	<br />
+	<form action="/todo" method="POST">
+	
+	    <div class="form-group">
+		    <input type="text"
+		      class="form-control" name="task" id="" aria-describedby="helpId" placeholder="">
+		      <button type="button" class="btn btn-primary">submit</button>
+	    </div>
+	</form>
+	
+</div>
+
+
+  
+</body>

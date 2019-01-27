@@ -1,0 +1,14 @@
+.list-group-item {
+    margin-bottom: .5em;
+}
+
+.container{
+    margin-top: 2em;
+}
+
+.form-group .btn{
+    margin-top: 1em;
+}
+
+.fa-window-close{float:right;
+margin-top: .2em;}
